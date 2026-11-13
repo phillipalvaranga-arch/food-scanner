@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Food Scanner</title>
+  <meta name="description" content="Scan a food barcode to see how processed it is, how close it is to its natural state, which ingredients look healthy or not, and a clear rating. Data from Open Food Facts. Informational only, not medical advice.">
+  <meta name="theme-color" content="#148a3e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Food Scanner">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon.png" type="image/png">
+  <link rel="icon" href="icon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script>try{var t=localStorage.getItem('foodscan-theme');if(t)document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark';}catch(e){}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="#/scan" aria-label="Food Scanner home">
+      <img src="icons/icon-192.png" alt="" width="42" height="42">
+      <span><b>Food Scanner</b><small>Scan a barcode · Open Food Facts</small></span>
+    </a>
+    <div class="top-actions">
+      <span id="netPill" class="pill" role="status">Checking…</span>
+      <button type="button" id="themeBtn" class="icon-btn" aria-pressed="false">Dark mode</button>
+    </div>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <nav class="tabs" aria-label="Main sections">
+    <button type="button" data-go="scan"><span aria-hidden="true">📷</span>Scan</button>
+    <button type="button" data-go="history"><span aria-hidden="true">🕑</span>History</button>
+    <button type="button" data-go="favorites"><span aria-hidden="true">★</span>Favorites</button>
+    <button type="button" data-go="compare"><span aria-hidden="true">⚖</span>Compare</button>
+    <button type="button" data-go="more"><span aria-hidden="true">ⓘ</span>More</button>
+  </nav>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="vendor/html5-qrcode.min.js" defer></script>
+  <script src="js/ingredients.js" defer></script>
+  <script src="js/rate.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
