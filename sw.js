@@ -1,4 +1,4 @@
-const C = 'foodscan-v1';
+const C = 'foodscan-v2';
 const F = [
   './',
   'index.html',

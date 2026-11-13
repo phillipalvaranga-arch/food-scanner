@@ -374,11 +374,16 @@
     const flags = [];
     const cats = String(product.categories_tags || product.categories || "").toLowerCase();
     const drink = /beverage|drink|soda|soft-drink|carbonated|eaux|boisson/.test(cats) || /ml|fl oz/i.test(String(product.serving_size || product.quantity || ""));
+    function nice(v) {
+      const a = Math.abs(v);
+      const d = a >= 10 ? 1 : a >= 1 ? 2 : 3;
+      return Number(v.toFixed(d)).toString();
+    }
     ["fat_100g", "saturated-fat_100g", "carbohydrates_100g", "sugars_100g", "fiber_100g", "proteins_100g", "salt_100g"].forEach(function (k) {
-      if (isNum(n[k]) && n[k] > 100.5) flags.push(k.replace("_100g", "") + " is listed as " + n[k] + " g per 100 g, which is over 100 g and cannot be right.");
+      if (isNum(n[k]) && n[k] > 100.5) flags.push(k.replace("_100g", "") + " is listed as " + nice(n[k]) + " g per 100 g, which is over 100 g and cannot be right.");
     });
-    if (isNum(n.sodium_100g) && n.sodium_100g > 40) flags.push("sodium is listed as " + n.sodium_100g + " g per 100 g, which is higher than pure salt.");
-    if (drink && isNum(n.salt_100g) && n.salt_100g > 1.5) flags.push("salt is listed as " + n.salt_100g + " g per 100 g in a drink, which is unusually high and may be a data error.");
+    if (isNum(n.sodium_100g) && n.sodium_100g > 40) flags.push("sodium is listed as " + nice(n.sodium_100g) + " g per 100 g, which is higher than pure salt.");
+    if (drink && isNum(n.salt_100g) && n.salt_100g > 1.5) flags.push("salt is listed as " + nice(n.salt_100g) + " g per 100 g in a drink, which is unusually high and may be a data error.");
     return flags;
   }
 

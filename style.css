@@ -21,8 +21,9 @@ a{color:var(--acc)}
 .top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:linear-gradient(120deg,#148a3e,#0b5a2c);color:#fff;box-shadow:var(--shadow)}
 .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;min-width:0}
 .brand img{border-radius:11px;flex:none}
+.brand span{min-width:0}
 .brand b{display:block;font-size:1.05rem;white-space:nowrap}
-.brand small{display:block;opacity:.85;font-size:.78rem}
+.brand small{display:block;opacity:.85;font-size:.78rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .top-actions{display:flex;gap:8px;align-items:center}
 .icon-btn{border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:7px 12px;font:inherit;font-size:.85rem;cursor:pointer;min-height:40px}
 .pill{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.15);white-space:nowrap}
@@ -113,7 +114,8 @@ html[data-theme="dark"] .toast{background:#e6f7ea;color:#07140c}
 .item.moderate{background:var(--midbg);color:var(--mid);border-color:transparent;margin:0}
 .item.unknown{background:var(--bg2);color:var(--mut);margin:0}
 .item b{display:block}
-.item span{display:block;font-size:.88rem;font-weight:400;opacity:.95}
+.item > span{display:block;font-size:.88rem;font-weight:400;opacity:.95}
+.item .badge{display:inline-block;margin:2px 0 0 0}
 .badge{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:999px;font-weight:700;vertical-align:middle;margin-left:4px;background:var(--bg2);color:var(--mut)}
 .badge.good{background:var(--ok);color:#fff}
 .badge.moderate{background:var(--gold);color:#1d1000}
@@ -157,6 +159,8 @@ details.card .in{padding:0 16px 16px}
 .formula{background:var(--bg2);border-radius:12px;padding:12px;font-size:.92rem;overflow:auto}
 .tag{display:inline-block;background:var(--accsoft);color:var(--acc);border-radius:999px;padding:2px 8px;font-size:.78rem;font-weight:700;margin-right:4px}
 @media(max-width:420px){
+  .pill{padding:5px 8px}
+  .icon-btn{padding:7px 10px}
   .prod-photo{width:88px;height:88px}
   .ring{width:112px;height:112px}
   .ring .num{font-size:1.7rem}
